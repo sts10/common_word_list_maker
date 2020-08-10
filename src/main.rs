@@ -1,10 +1,11 @@
 use std::collections::HashMap;
-use std::error::Error;
-use std::ffi::OsString;
+// use std::error::Error;
+// use std::ffi::OsString;
 use std::fs::File;
-use std::io;
-use std::process;
+// use std::io;
+// use std::process;
 // use std::io::prelude::Read;
+use std::env;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone)]
@@ -17,10 +18,17 @@ pub struct Entry {
 }
 
 fn main() {
-    let tsv_file = "/home/sschlinkert/Downloads/googlebooks-eng-all-1gram-20120701-a";
+    let args: Vec<String> = env::args().collect();
+    println!("{:?}", args);
+    let letter = &args[1];
+    let tsv_file = format!(
+        "/home/sschlinkert/Downloads/googlebooks-eng-all-1gram-20120701-{}",
+        letter,
+    );
     let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
-    write_count_vec_to_csv(counts_vec);
-    println!("Done?");
+    println!("Made counts vec. Now just writing it to a csv");
+    write_count_vec_to_csv(counts_vec, letter);
+    println!("Done printing csv for {}", letter);
 }
 
 fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)> {
@@ -46,6 +54,8 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
         };
         if record[1].parse::<usize>().unwrap() > 1975 {
             let word = clean_word(record[0].to_string());
+            // record[2] is overall appaearances; record[3] is the number of distinct samples (books) it
+            // appeared in https://storage.googleapis.com/books/ngrams/books/datasetsv3.html
             let this_count = record[2].to_string().parse().unwrap();
             counts_hashmap
                 .entry(word)
@@ -67,14 +77,15 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
     count_vec
 }
 
-fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>) {
-    let file_path = "test_csv.csv";
+fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>, letter: &str) {
+    let file_path = format!("csv/{}.csv", letter);
     let mut wtr = csv::Writer::from_path(file_path).unwrap();
 
     for word in counts_vec {
         wtr.write_record(&[word.0, word.1.to_string()]).unwrap();
     }
-    wtr.flush();
+    // wtr.flush();
+    wtr.flush().unwrap();
 }
 
 fn clean_word(w: String) -> String {
