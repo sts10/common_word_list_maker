@@ -63,14 +63,14 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
                 .or_insert(this_count);
         }
     }
-    // println!("{:?}", counts_hashmap);
+
     // convert to a Vector of Tuples and sort it by appearance count
     let mut count_vec: Vec<(String, usize)> = counts_hashmap.into_iter().collect();
     count_vec.sort_by(|a, b| a.1.cmp(&b.1));
     count_vec.reverse();
-    for pair in &count_vec {
-        println!("{:?}", pair);
-    }
+    // for pair in &count_vec {
+    //     println!("{:?}", pair);
+    // }
     println!("vector size for letter a is {}", count_vec.len());
     count_vec.drain(10000..);
     println!("drained: vector size for letter a is {}", count_vec.len());
