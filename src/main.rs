@@ -1,5 +1,9 @@
 use std::collections::HashMap;
+use std::error::Error;
+use std::ffi::OsString;
 use std::fs::File;
+use std::io;
+use std::process;
 // use std::io::prelude::Read;
 use std::path::PathBuf;
 
@@ -14,11 +18,12 @@ pub struct Entry {
 
 fn main() {
     let tsv_file = "/home/sschlinkert/Downloads/googlebooks-eng-all-1gram-20120701-a";
-    print_records_from_tsv(PathBuf::from(tsv_file));
+    let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
+    write_count_vec_to_csv(counts_vec);
+    println!("Done?");
 }
 
-fn print_records_from_tsv(file_path: PathBuf) {
-    // let mut entries: Vec<Entry> = vec![];
+fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)> {
     let mut counts_hashmap: HashMap<String, usize> = HashMap::new();
 
     let file = match File::open(file_path) {
@@ -39,22 +44,37 @@ fn print_records_from_tsv(file_path: PathBuf) {
                 );
             }
         };
-        // println!("This record is {:?}", record);
-        let word = clean_word(record[0].to_string());
-        let this_count = record[2].to_string().parse().unwrap();
-        counts_hashmap
-            .entry(word)
-            .and_modify(|count| *count += this_count)
-            .or_insert(this_count);
+        if record[1].parse::<usize>().unwrap() > 1975 {
+            let word = clean_word(record[0].to_string());
+            let this_count = record[2].to_string().parse().unwrap();
+            counts_hashmap
+                .entry(word)
+                .and_modify(|count| *count += this_count)
+                .or_insert(this_count);
+        }
     }
     // println!("{:?}", counts_hashmap);
     // convert to a Vector of Tuples and sort it by appearance count
     let mut count_vec: Vec<(String, usize)> = counts_hashmap.into_iter().collect();
     count_vec.sort_by(|a, b| a.1.cmp(&b.1));
-    // count_vec.reverse();
+    count_vec.reverse();
     for pair in &count_vec {
         println!("{:?}", pair);
     }
+    println!("vector size for letter a is {}", count_vec.len());
+    count_vec.drain(10000..);
+    println!("drained: vector size for letter a is {}", count_vec.len());
+    count_vec
+}
+
+fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>) {
+    let file_path = "test_csv.csv";
+    let mut wtr = csv::Writer::from_path(file_path).unwrap();
+
+    for word in counts_vec {
+        wtr.write_record(&[word.0, word.1.to_string()]).unwrap();
+    }
+    wtr.flush();
 }
 
 fn clean_word(w: String) -> String {
