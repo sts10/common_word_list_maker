@@ -2,6 +2,7 @@ use std::collections::HashMap;
 // use std::error::Error;
 // use std::ffi::OsString;
 use std::fs::File;
+use std::fs::OpenOptions;
 // use std::io;
 // use std::process;
 // use std::io::prelude::Read;
@@ -21,10 +22,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
     let letter = &args[1];
-    let tsv_file = format!(
-        "/home/sschlinkert/Downloads/googlebooks-eng-all-1gram-20120701-{}",
-        letter,
-    );
+    let tsv_file = format!("raw/{}", letter,);
     let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
     println!("Made counts vec. Now just writing it to a csv");
     write_count_vec_to_csv(counts_vec, letter);
@@ -72,20 +70,35 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
     //     println!("{:?}", pair);
     // }
     println!("vector size for letter a is {}", count_vec.len());
-    count_vec.drain(10000..);
-    println!("drained: vector size for letter a is {}", count_vec.len());
+    if count_vec.len() > 20_000 {
+        count_vec.drain(20_000..);
+        println!("drained: vector size for letter a is {}", count_vec.len());
+    }
     count_vec
 }
 
-fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>, letter: &str) {
-    let file_path = format!("csv/{}.csv", letter);
-    let mut wtr = csv::Writer::from_path(file_path).unwrap();
+fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>, _letter: &str) {
+    // let file_path_by_score = format!("csv/all_score_first.csv");
+    // let mut wtr_by_score = csv::Writer::from_path(file_path_by_score).unwrap();
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open("csv/all_score_first.csv")
+        .unwrap();
+    let mut wtr_by_score = csv::Writer::from_writer(file);
 
     for word in counts_vec {
-        wtr.write_record(&[word.0, word.1.to_string()]).unwrap();
+        // wtr_by_word
+        //     .write_record([&word.0, word.1.to_string()])
+        //     .unwrap();
+        wtr_by_score
+            .write_record(&[word.1.to_string(), word.0])
+            .unwrap();
     }
     // wtr.flush();
-    wtr.flush().unwrap();
+    // wtr_by_word.flush().unwrap();
+    wtr_by_score.flush().unwrap();
 }
 
 fn clean_word(w: String) -> String {
