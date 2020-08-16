@@ -17,7 +17,7 @@ Step 2 is to sort the all_score_first CSV file by the number of appearances, cut
 
 ## Tools for further working on the produced word list
 
-If you'd like to easily do more manipulations of the resulting word list file, such as remove prefix words, I'd recommend another tool I built called [Tidy](https://github.com/sts10/tidy/).
+If you'd like to easily do more manipulations of the resulting word list file, such as remove prefix words, I'd recommend another tool I built called [Tidy](https://github.com/sts10/tidy/). For example, `tidy -o cleaned_up_list.txt -lpe -m 4 -a /usr/share/dict/words word_list.txt`.
 
 ## On licensing/usage
 
