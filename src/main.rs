@@ -17,19 +17,33 @@ pub struct Entry {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("{:?}", args);
+    println!("Arguments pecieved: \n{:?}", args);
     if args.len() > 1 && !args[1].contains("csv") {
+        // If we recieved any arguments, assume it's a letter and we're to parse a
+        // TSV file of one letter's worth of Google Booke Ngram data
         let letter = &args[1];
         let tsv_file = format!("raw/{}", letter,);
+        // Make a Vector of tuples, where each tuple contains the word and its number of
+        // appearances
         let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
         println!("Made counts vec. Now just writing it to a csv");
-        write_count_vec_to_csv(counts_vec, letter);
-        println!("Done printing csv for {}", letter);
+        // Append this data to a big CSV file that will eventually contain this data
+        // for all 26 letters of the alphabet. CSV file will be called
+        // all_score_first.csv, named that since the number of appearances (the
+        // "score") is listed first
+        append_count_data_to_full_csv_file(counts_vec);
+        println!("Done appending letter {} data to full csv file", letter);
     } else {
-        println!("Creating a word list");
+        println!("Did not receive a letter to process...\nCreating a text file word list");
 
+        // Since the data in the all_score_first CSV file isn't sorted by number of
+        // appearances, we have to do that in a separate step
         let all_counts_vec = make_sorted_counts_vec_from_complete_csv("csv/all_score_first.csv");
+        // We'll now use this handy Vector to create a word list of the top 26,000 words, with a
+        // minium word length of 4 characters. We'll also exclude the first 75 because they're
+        // a little _too_ common.
         make_opinionated_word_list_from_counts_vec(all_counts_vec);
+        // This word list will be printed to a new text file called word_list.txt1
     }
 }
 
@@ -81,9 +95,7 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
     count_vec
 }
 
-fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>, _letter: &str) {
-    // let file_path_by_score = format!("csv/all_score_first.csv");
-    // let mut wtr_by_score = csv::Writer::from_path(file_path_by_score).unwrap();
+fn append_count_data_to_full_csv_file(counts_vec: Vec<(String, usize)>) {
     let file = OpenOptions::new()
         .write(true)
         .create(true)
@@ -93,15 +105,10 @@ fn write_count_vec_to_csv(counts_vec: Vec<(String, usize)>, _letter: &str) {
     let mut wtr_by_score = csv::Writer::from_writer(file);
 
     for word in counts_vec {
-        // wtr_by_word
-        //     .write_record([&word.0, word.1.to_string()])
-        //     .unwrap();
         wtr_by_score
             .write_record(&[word.1.to_string(), word.0])
             .unwrap();
     }
-    // wtr.flush();
-    // wtr_by_word.flush().unwrap();
     wtr_by_score.flush().unwrap();
 }
 
