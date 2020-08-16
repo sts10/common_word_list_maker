@@ -29,7 +29,7 @@ fn main() {
         println!("Creating a word list");
 
         let all_counts_vec = make_sorted_counts_vec_from_complete_csv("csv/all_score_first.csv");
-        make_word_list_from_counts_vec(all_counts_vec);
+        make_opinionated_word_list_from_counts_vec(all_counts_vec);
     }
 }
 
@@ -143,14 +143,14 @@ fn make_sorted_counts_vec_from_complete_csv(file_path: &str) -> Vec<(String, usi
     full_count_vec
 }
 
-fn make_word_list_from_counts_vec(full_count_vec: Vec<(String, usize)>) {
+fn make_opinionated_word_list_from_counts_vec(full_count_vec: Vec<(String, usize)>) {
     let mut list: Vec<String> = Vec::new();
-    let words_to_print = 20_000;
+    let words_to_print = 26_000;
     let minimum_word_length = 4;
 
     let mut i = 0;
     for word_info in full_count_vec {
-        if word_info.0.len() >= minimum_word_length {
+        if i > 76 && word_info.0.len() >= minimum_word_length {
             list.push(word_info.0);
         }
         i += 1;
