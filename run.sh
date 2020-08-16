@@ -34,3 +34,7 @@ do_letter w
 do_letter x
 do_letter y
 do_letter z
+
+# Make the word list (no argument provided is what tells the Rust code 
+# that that's what we want to do)
+cargo run --release

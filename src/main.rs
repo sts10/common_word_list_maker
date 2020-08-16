@@ -1,12 +1,9 @@
+use csv::Reader;
 use std::collections::HashMap;
-// use std::error::Error;
-// use std::ffi::OsString;
+use std::env;
 use std::fs::File;
 use std::fs::OpenOptions;
-// use std::io;
-// use std::process;
-// use std::io::prelude::Read;
-use std::env;
+use std::io::Write;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone)]
@@ -21,12 +18,19 @@ pub struct Entry {
 fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
-    let letter = &args[1];
-    let tsv_file = format!("raw/{}", letter,);
-    let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
-    println!("Made counts vec. Now just writing it to a csv");
-    write_count_vec_to_csv(counts_vec, letter);
-    println!("Done printing csv for {}", letter);
+    if args.len() > 1 && !args[1].contains("csv") {
+        let letter = &args[1];
+        let tsv_file = format!("raw/{}", letter,);
+        let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
+        println!("Made counts vec. Now just writing it to a csv");
+        write_count_vec_to_csv(counts_vec, letter);
+        println!("Done printing csv for {}", letter);
+    } else {
+        println!("Creating a word list");
+
+        let all_counts_vec = make_sorted_counts_vec_from_complete_csv("csv/all_score_first.csv");
+        make_word_list_from_counts_vec(all_counts_vec);
+    }
 }
 
 fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)> {
@@ -108,4 +112,54 @@ fn clean_word(w: String) -> String {
         .collect::<Vec<&str>>()[0]
         .to_string()
         .to_lowercase()
+}
+
+fn make_sorted_counts_vec_from_complete_csv(file_path: &str) -> Vec<(String, usize)> {
+    // let mut word_list: Vec<String> = Vec::new();
+    let mut full_counts_hashmap: HashMap<String, usize> = HashMap::new();
+
+    let mut rdr = Reader::from_path(file_path).expect("Error reading CSV file");
+    for result in rdr.records() {
+        let record = match result {
+            Ok(rec) => rec,
+            Err(e) => {
+                panic!(
+                    "Error reading a line of the specified CSV file: {}. Aborting.",
+                    e
+                );
+            }
+        };
+        let word = record[1].to_string();
+        let this_count = record[0].to_string().parse().unwrap();
+        full_counts_hashmap
+            .entry(word)
+            .and_modify(|count| *count += this_count)
+            .or_insert(this_count);
+    }
+    // convert to a Vector of Tuples and sort it by appearance count
+    let mut full_count_vec: Vec<(String, usize)> = full_counts_hashmap.into_iter().collect();
+    full_count_vec.sort_by(|a, b| a.1.cmp(&b.1));
+    full_count_vec.reverse();
+    full_count_vec
+}
+
+fn make_word_list_from_counts_vec(full_count_vec: Vec<(String, usize)>) {
+    let mut list: Vec<String> = Vec::new();
+    let words_to_print = 20_000;
+    let minimum_word_length = 4;
+
+    let mut i = 0;
+    for word_info in full_count_vec {
+        if word_info.0.len() >= minimum_word_length {
+            list.push(word_info.0);
+        }
+        i += 1;
+        if i > words_to_print {
+            break;
+        }
+    }
+    let mut f = File::create("word_list.txt").expect("Unable to create file");
+    for word in &list {
+        writeln!(f, "{}", word).expect("Unable to write data to file");
+    }
 }
