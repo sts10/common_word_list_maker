@@ -19,8 +19,8 @@ For example, if you want to (1) filter out words NOT in your Mac/Linux OS's dict
 ## Running the program 
 
 1. Have Rust installed
-2. Run `./run.sh`
-3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`
+2. Run `./run.sh`, which creates "word_list_raw.txt"
+3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`, which creates a cleaned-up "word_list.txt"
 
 ## On licensing/usage
 
