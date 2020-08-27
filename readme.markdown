@@ -4,20 +4,23 @@ This program scrapes most commonly used words from Google Books Ngram data in or
 
 ## How this program works
 
-`run.sh` lists all the commands for a full run-through of the program. 
+**Step 1** is to programmatically **scrape** and clean the Google Books Ngram data for words starting with each letter of the alphabet. It sums and merges counts from all years after 1975, and then takes the top 20,000 words for each letter. 
 
-Step 1 is to programmatically **scrape** and clean the Google Books Ngram data for each letter of the alphabet. It does this for all 26 letters, producing a separate CSV file for each letter in the "csv" directory. It also adds that letter's words to a CSV file called "all_score_first.csv", which is a CSV where the number of times a word appears in the Google Book data is the first column.
+It does this for all 26 letters, producing a separate CSV file for each letter in the "csv" directory. It also adds every letter's words to a CSV file called "all_score_first.csv", which is a CSV where the number of times a word appears in the Google Book data is the first column, and the word itself is the second column.
 
-Step 2 is to sort the all_score_first CSV file by the number of appearances, cut it to a hard-coded length (say 26,000 words) specified in `src/main.rs`, and print it to a new text file called "word_list.txt". This file is still sorted by the number of appearances, even though that data is not in the file. Of course you're welcome to sort it alphabetically later.
+**Step 2** is to sort the all_score_first CSV file by the number of appearances, cut it to a hard-coded length (say 26,000 words) specified in `src/main.rs`, and print it to a new text file called "word_list_raw.txt". This file is still sorted by the number of appearances, even though that data is not in the file. 
+
+`run.sh` includes all the of the commands to perform steps 1 and 2.
+
+**Step 3** (optional) is to sort and further clean "word_list_raw.txt". We're going to do this with another tool I wrote called Tidy. Install [Tidy](https://github.com/sts10/tidy/) and then you have a few options
+
+For example, if you want to filter out words NOT in your Mac/Linux OS's dictionary and eliminate prefix words, you'd run: `tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words word_list_raw.txt`.
 
 ## Running the program 
 
 1. Have Rust installed
 2. Run `./run.sh`
-
-## Tools for further working on the produced word list
-
-If you'd like to easily do more manipulations of the resulting word list file, such as remove prefix words, I'd recommend another tool I built called [Tidy](https://github.com/sts10/tidy/). For example, `tidy -o cleaned_up_list.txt -lpe -m 4 -a /usr/share/dict/words word_list.txt`.
+3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words word_list_raw.txt`
 
 ## On licensing/usage
 

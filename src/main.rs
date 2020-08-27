@@ -43,7 +43,7 @@ fn main() {
         // minium word length of 4 characters. We'll also exclude the first 75 because they're
         // a little _too_ common.
         make_opinionated_word_list_from_counts_vec(all_counts_vec);
-        // This word list will be printed to a new text file called word_list.txt1
+        // This word list will be printed to a new text file called word_list_raw.txt
     }
 }
 
@@ -157,6 +157,7 @@ fn make_opinionated_word_list_from_counts_vec(full_count_vec: Vec<(String, usize
 
     let mut i = 0;
     for word_info in full_count_vec {
+        // skip first 76 words, as they're a bit too common
         if i > 76 && word_info.0.len() >= minimum_word_length {
             list.push(word_info.0);
         }
@@ -165,7 +166,7 @@ fn make_opinionated_word_list_from_counts_vec(full_count_vec: Vec<(String, usize
             break;
         }
     }
-    let mut f = File::create("word_list.txt").expect("Unable to create file");
+    let mut f = File::create("word_list_raw.txt").expect("Unable to create file");
     for word in &list {
         writeln!(f, "{}", word).expect("Unable to write data to file");
     }
