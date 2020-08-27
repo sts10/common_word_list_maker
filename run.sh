@@ -1,5 +1,8 @@
 #!/bin/bash
 
+mkdir csv
+mkdir raw
+
 do_letter() {
   echo $1
   curl -o raw/$1.gz http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-$1.gz 
