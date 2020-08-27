@@ -12,15 +12,15 @@ It does this for all 26 letters, producing a separate CSV file for each letter i
 
 `run.sh` includes all the of the commands to perform steps 1 and 2.
 
-**Step 3** (optional) is to sort and further clean "word_list_raw.txt". We're going to do this with another tool I wrote called Tidy. Install [Tidy](https://github.com/sts10/tidy/) and then you have a few options
+**Step 3** (optional) is to sort and further clean "word_list_raw.txt". We're going to do this with another tool I wrote called Tidy. Install [Tidy](https://github.com/sts10/tidy/) and then you have a few options.
 
-For example, if you want to filter out words NOT in your Mac/Linux OS's dictionary and eliminate prefix words, you'd run: `tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words word_list_raw.txt`.
+For example, if you want to (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words in reject_words.txt (which is adapted from [this list](https://gist.github.com/micahflee/99809514a6b8556ea4dc)), (3) eliminate prefix words, and (4) ensure all words are lowercase and 4 characters or longer, you'd run: `tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
 
 ## Running the program 
 
 1. Have Rust installed
 2. Run `./run.sh`
-3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words word_list_raw.txt`
+3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`
 
 ## On licensing/usage
 

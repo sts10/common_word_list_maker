@@ -590,7 +590,6 @@ angioplasty
 angled
 angles
 angrily
-angry
 anguish
 angular
 animals
@@ -668,7 +667,6 @@ antithesis
 antithetical
 antitrust
 ants
-anus
 anxieties
 anxiety
 anxiously
@@ -1369,7 +1367,6 @@ bewilderment
 beyond
 biased
 biases
-bible
 biblical
 bibliographical
 bibliographies
@@ -1426,7 +1423,6 @@ biscuits
 bisexual
 bishops
 bison
-bitch
 bites
 biting
 bitmap
@@ -1550,7 +1546,6 @@ boosted
 booster
 booths
 boots
-booty
 bordered
 bordering
 borderline
@@ -1753,7 +1748,7 @@ bulky
 bulletins
 bullets
 bullock
-bullshit
+bulls
 bullying
 bumped
 bumper
@@ -1777,7 +1772,6 @@ burgeoning
 burger
 burglary
 burials
-buried
 burned
 burner
 burning
@@ -1922,7 +1916,6 @@ caravan
 carbide
 carbohydrates
 carbonate
-carcass
 carcinogenic
 carcinogens
 carcinomas
@@ -3195,7 +3188,6 @@ cramps
 cranes
 cranial
 crank
-crap
 crashed
 crashes
 crashing
@@ -3839,7 +3831,6 @@ diary
 diastolic
 diced
 dichotomy
-dick
 dictated
 dictates
 dictatorship
@@ -3847,7 +3838,6 @@ dictionaries
 dictionary
 dictum
 didactic
-died
 diesel
 dietary
 dieter
@@ -3922,7 +3912,7 @@ directors
 directory
 directs
 dirk
-dirty
+dirt
 disabilities
 disability
 disabled
@@ -4316,7 +4306,6 @@ duff
 dukes
 dull
 duly
-dumb
 dummies
 dummy
 dumped
@@ -4346,7 +4335,6 @@ dyed
 dyer
 dyes
 dying
-dyke
 dynamically
 dynamics
 dynamism
@@ -4632,7 +4620,6 @@ endurance
 endured
 enduring
 enemies
-enemy
 energetically
 energies
 energized
@@ -5131,7 +5118,6 @@ fairies
 fairly
 fairness
 fairs
-fairy
 faithfully
 faithfulness
 faiths
@@ -6237,7 +6223,7 @@ hardships
 hardware
 hardwood
 hardy
-harem
+hare
 harlequin
 harmed
 harmful
@@ -6602,7 +6588,6 @@ hurts
 husbandry
 husbands
 hushed
-husky
 huts
 hybrids
 hydraulic
@@ -6654,7 +6639,6 @@ ideologies
 ideology
 idioms
 idiosyncratic
-idiot
 idleness
 idly
 idolatry
@@ -6835,7 +6819,6 @@ incense
 incentives
 inception
 incessantly
-incest
 inches
 incidence
 incidentally
@@ -7402,7 +7385,6 @@ itinerary
 itself
 ivory
 jackets
-jade
 jagged
 jaguar
 jailed
@@ -7546,7 +7528,6 @@ kneeling
 knees
 knelt
 knew
-knife
 knights
 knitting
 knives
@@ -7593,7 +7574,6 @@ lagged
 lagging
 lagoon
 lags
-laid
 lain
 laity
 lakes
@@ -7785,7 +7765,6 @@ liberation
 libertarian
 liberties
 liberty
-libido
 librarians
 libraries
 library
@@ -8754,7 +8733,6 @@ mythological
 mythology
 myths
 o'clock
-o'er
 oaks
 oars
 oasis
@@ -9340,7 +9318,6 @@ peasantry
 peasants
 peat
 pebbles
-peck
 peculiarities
 peculiarity
 peculiarly
@@ -10047,7 +10024,6 @@ priced
 priceless
 prices
 pricing
-prick
 pride
 priesthood
 priestly
@@ -10425,7 +10401,6 @@ quartz
 quasi
 quay
 queens
-queer
 quenched
 quenching
 queried
@@ -10520,7 +10495,6 @@ rampant
 ranchers
 randomized
 randomly
-randy
 ranged
 rangers
 ranges
@@ -11248,7 +11222,6 @@ rivalries
 rivalry
 rivals
 riverside
-roach
 roadside
 roadway
 roamed
@@ -11773,7 +11746,6 @@ sexism
 sexist
 sexuality
 sexually
-sexy
 shabby
 shack
 shaded
@@ -11851,7 +11823,6 @@ shipped
 shipping
 ships
 shirts
-shit
 shivered
 shivering
 shocked
@@ -12056,7 +12027,6 @@ slammed
 slamming
 slander
 slang
-slant
 slapped
 slapping
 slashed
@@ -12082,7 +12052,7 @@ slides
 sliding
 slightest
 slightly
-slime
+slim
 sling
 slipped
 slippers
@@ -12106,7 +12076,6 @@ slumber
 slumped
 slums
 slung
-smack
 smaller
 smallest
 smallpox
@@ -12333,7 +12302,6 @@ spells
 spending
 spends
 spent
-sperm
 spheres
 spherical
 sphincter
@@ -14055,7 +14023,6 @@ urgently
 urges
 urging
 urinary
-urine
 usability
 usable
 usages
