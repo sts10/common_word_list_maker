@@ -1,4 +1,4 @@
-# Google Books Ngram Word List Builder
+# Common Word List Maker
 
 This program scrapes most commonly used words from Google Books Ngram data in order to create a word list of commonly used words. It scrapes 2012 Google Books Ngram data from this website: [https://storage.googleapis.com/books/ngrams/books/datasetsv3.html](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html).
 
