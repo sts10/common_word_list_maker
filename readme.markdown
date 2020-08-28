@@ -1,8 +1,10 @@
 # Common Word List Maker
 
-This program scrapes most commonly used words from Google Books Ngram data in order to create a word list of commonly used words. It scrapes 2012 Google Books Ngram data from this website: [https://storage.googleapis.com/books/ngrams/books/datasetsv3.html](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html).
+This program scrapes most commonly used words from Google Books Ngram data in order to create a word list of commonly used words. 
 
-## How this program works
+It's hard-coded to scrape 2012 Google Books Ngram data from this website: [https://storage.googleapis.com/books/ngrams/books/datasetsv3.html](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html).
+
+## What this program does
 
 **Step 1** is to programmatically **scrape** and clean the Google Books Ngram data for words starting with each letter of the alphabet. It sums and merges counts from all years after 1975, and then takes the top 20,000 words for each letter. 
 
@@ -18,10 +20,11 @@ For example, if you want to (1) filter out words NOT in your Mac/Linux OS's dict
 
 ## Running the program 
 
-1. Have Rust installed
-2. Run `./run.sh`, which creates "word_list_raw.txt"
-3. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`, which creates a cleaned-up "word_list.txt"
+Assuming you have [Rust installed](https://www.rust-lang.org/tools/install)...
+
+1. Run `./run.sh`, which creates "word_list_raw.txt"
+2. (Optional): `cargo install --git https://github.com/sts10/tidy && tidy -o word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`, which creates a cleaned-up "word_list.txt"
 
 ## On licensing/usage
 
-The Google Books Ngram data compilation I used "is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/)" ([source](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html)). This project has no association with Google, nor does Google endorse this project. See LICENSE file for more information.
+The Google Books Ngram data compilation I used "is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/)" ([source](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html)). This project has no association with Google, nor does Google endorse this project. See LICENSE file for more information on how this project is licensed.
