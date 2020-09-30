@@ -22,7 +22,7 @@ To do this, you'll likely want to make strategic cuts to the word_list_raw.txt f
 
 For more advanced editing, I'd recommend using another tool I wrote called [Tidy](https://github.com/sts10/tidy/). Once installed, Tidy provides you a few options of how further clean up your word list, which you can read about in the tool's documentation.
 
-But as an example, if you want to (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words in the provided reject_words.txt file (which is adapted from [this list](https://gist.github.com/micahflee/99809514a6b8556ea4dc)), (3) eliminate prefix words, (4) eliminate words shorter than 4 characters, and (5) ensure all words are lowercase, you'd run: `tidy -o cleaned_word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
+But as an example, if you want to (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words in the provided reject_words.txt file (which is adapted from [this list](https://gist.github.com/micahflee/99809514a6b8556ea4dc)), (3) eliminate [prefix words](https://en.wikipedia.org/wiki/Prefix_code), (4) eliminate words shorter than 4 characters, and (5) ensure all words are lowercase, you'd run: `tidy -o cleaned_word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
 
 An example of a "cleaned" word list of 16,766 words that I made using Tidy can be found at `./example_word_list.txt`.
 
