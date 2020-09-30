@@ -24,7 +24,7 @@ For more advanced editing, I'd recommend using another tool I wrote called [Tidy
 
 But as an example, if you want to (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words from a text file of "reject words" (you can find such a list [here](https://github.com/zacanger/profane-words)), (3) eliminate [prefix words](https://en.wikipedia.org/wiki/Prefix_code), (4) eliminate words shorter than 4 characters, and (5) ensure all words are lowercase, you'd run: `tidy -o cleaned_word_list.txt -lpe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
 
-An example of a "cleaned" word list of 16,660 words that I made using Tidy can be found at `./example_word_list.txt`.
+An example of a "cleaned" word list of about 16,000 words that I made using Tidy can be found at `./example_word_list.txt`.
 
 ## How to run this program 
 

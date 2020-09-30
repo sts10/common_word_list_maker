@@ -223,7 +223,6 @@ adder
 addicted
 addictions
 addictive
-addicts
 adding
 additionally
 additions
@@ -997,7 +996,6 @@ aspiring
 assailant
 assailed
 assassinated
-assassination
 assassins
 assaulted
 assaults
@@ -1238,7 +1236,6 @@ axle
 axons
 azimuth
 babel
-babies
 baby
 bachelor
 bacilli
@@ -1285,7 +1282,6 @@ ballistic
 balloons
 ballots
 ballroom
-balls
 balm
 bamboo
 banal
@@ -1536,7 +1532,6 @@ bidirectional
 bids
 biennial
 bifurcation
-bigger
 biggest
 bigotry
 bikes
@@ -1582,7 +1577,6 @@ birthplace
 birthright
 births
 biscuits
-bisexual
 bishops
 bison
 bites
@@ -1699,7 +1693,6 @@ bombarded
 bombardment
 bombed
 bombings
-bombs
 bonded
 bonding
 bonds
@@ -1723,7 +1716,6 @@ booster
 boosting
 booths
 bootstrap
-booze
 bordered
 bordering
 borderline
@@ -1737,7 +1729,6 @@ borrowed
 borrowers
 borrowing
 borrows
-bosom
 bosses
 botanical
 botanist
@@ -1768,7 +1759,6 @@ bourgeoisie
 bouts
 bovine
 bowed
-bowels
 bowers
 bowing
 bowling
@@ -1821,7 +1811,6 @@ breaks
 breakthroughs
 breakup
 breasted
-breasts
 breathed
 breathes
 breathing
@@ -2245,7 +2234,6 @@ catfish
 cathedrals
 catheters
 cathode
-catholic
 cations
 cats
 cattle
@@ -2298,7 +2286,6 @@ cellular
 cellulose
 cemented
 cemeteries
-cemetery
 censored
 censorship
 censure
@@ -2783,7 +2770,6 @@ colonization
 colonized
 colony
 coloration
-colored
 colorful
 coloring
 colorless
@@ -3197,7 +3183,6 @@ consolidation
 consonants
 consortium
 conspicuously
-conspiracy
 conspirators
 conspired
 constables
@@ -3443,7 +3428,6 @@ corrosive
 corrugated
 corrupted
 corrupting
-corruption
 cortex
 cortical
 cosine
@@ -3556,7 +3540,6 @@ crazed
 crazy
 creaking
 creams
-creamy
 crease
 created
 creates
@@ -3590,8 +3573,6 @@ crib
 cricket
 cried
 cries
-crimes
-criminals
 criminology
 crimson
 crippled
@@ -4455,7 +4436,6 @@ discussing
 discussions
 disdain
 diseased
-diseases
 disembodied
 disengagement
 disgraced
@@ -4596,7 +4576,6 @@ distributors
 districts
 distrust
 disturbances
-disturbed
 disturbing
 ditches
 ditto
@@ -5529,10 +5508,8 @@ excursions
 excused
 excuses
 executable
-executed
 executes
 executing
-executioner
 executions
 executives
 executors
@@ -5740,7 +5717,6 @@ faculty
 faded
 fades
 fading
-failed
 failings
 fails
 failures
@@ -5749,7 +5725,6 @@ faintest
 fainting
 faintly
 fairer
-fairies
 fairly
 fairness
 fairs
@@ -5788,7 +5763,6 @@ fanfare
 fangs
 fanned
 fanning
-fanny
 fans
 fantasies
 fantastic
@@ -6012,7 +5986,6 @@ fires
 firewall
 firewood
 fireworks
-firing
 firmer
 firmly
 firmness
@@ -6632,7 +6605,6 @@ gilt
 gingerly
 girdle
 girlfriends
-girls
 gist
 given
 gives
@@ -7005,7 +6977,6 @@ harbors
 hardcover
 hardened
 hardening
-harder
 hardest
 hardly
 hardness
@@ -7070,7 +7041,6 @@ headaches
 headed
 headers
 headings
-headlights
 headlines
 headlong
 headmaster
@@ -7150,7 +7120,6 @@ hemispheric
 hemlock
 hemoglobin
 hemorrhage
-hemp
 henceforth
 hens
 hepatic
@@ -7402,7 +7371,6 @@ humiliation
 humility
 humming
 humorous
-hump
 humus
 hunched
 hundreds
@@ -8463,7 +8431,6 @@ kidnapped
 kidnapping
 kidneys
 kids
-killed
 killers
 killings
 kiln
@@ -8501,7 +8468,6 @@ knights
 knitted
 knitting
 knives
-knob
 knocked
 knocking
 knockout
@@ -8536,7 +8502,6 @@ lacking
 lacks
 lacquer
 lacrimal
-lactate
 lactation
 lactic
 lactose
@@ -8718,7 +8683,6 @@ lenses
 lent
 leopard
 leprosy
-lesbians
 lesions
 lessee
 lessened
@@ -8781,7 +8745,6 @@ lids
 lied
 liege
 liens
-lies
 lieutenants
 lifeless
 lifelong
@@ -8849,7 +8812,6 @@ liquidated
 liquidation
 liquidity
 liquids
-liquor
 lire
 lisp
 listed
@@ -8966,7 +8928,6 @@ loses
 losing
 losses
 lost
-lotion
 lots
 lottery
 lotus
@@ -9538,7 +9499,6 @@ ministries
 ministry
 mink
 minorities
-minority
 minors
 minstrel
 mint
@@ -9654,7 +9614,6 @@ molding
 molds
 molecular
 molecules
-moles
 moll
 molten
 molybdenum
@@ -10044,7 +10003,6 @@ ophthalmic
 ophthalmology
 opiates
 opinions
-opium
 opponents
 opportunism
 opportunistic
@@ -10199,7 +10157,6 @@ outweighed
 oval
 ovarian
 ovaries
-ovary
 ovens
 overalls
 overboard
@@ -10512,7 +10469,6 @@ paved
 pavements
 pavilion
 paving
-pawn
 paws
 payable
 paycheck
@@ -11133,7 +11089,6 @@ pounds
 poured
 pouring
 pours
-poverty
 powdered
 powders
 powered
@@ -11801,7 +11756,6 @@ races
 racially
 racing
 racism
-racist
 racket
 racks
 radar
@@ -12263,7 +12217,6 @@ relying
 remainder
 remained
 remaining
-remains
 remake
 remanded
 remarkable
@@ -12605,7 +12558,6 @@ revolved
 revolver
 revolves
 revolving
-revue
 revulsion
 rewarded
 rewarding
@@ -13066,8 +13018,6 @@ seafood
 sealed
 sealing
 seals
-seaman
-seamen
 seamless
 seams
 searched
@@ -13390,7 +13340,6 @@ shoes
 shone
 shook
 shooter
-shooting
 shoots
 shopkeepers
 shoppers
@@ -14655,7 +14604,6 @@ sweeter
 sweetest
 sweetheart
 sweetly
-sweetness
 sweets
 swelled
 swelling
@@ -15535,7 +15483,6 @@ tyranny
 tyrants
 ubiquitous
 ugliness
-ugly
 ulceration
 ulcers
 ultimately
@@ -15896,7 +15843,6 @@ urgently
 urges
 urging
 uric
-urinary
 urination
 urology
 usability
@@ -15916,7 +15862,6 @@ usurped
 usury
 utensils
 uterine
-uterus
 utilitarianism
 utilities
 utility
@@ -16112,7 +16057,6 @@ violated
 violates
 violating
 violations
-violence
 violently
 violets
 violinist
@@ -16361,7 +16305,6 @@ welcomes
 welcoming
 welded
 welding
-welfare
 wellington
 wells
 welsh
@@ -16410,7 +16353,6 @@ whirling
 whirlpool
 whirlwind
 whiskers
-whiskey
 whisky
 whispered
 whispering
@@ -16522,7 +16464,6 @@ woke
 wolf
 wolves
 womanhood
-womb
 women
 wondered
 wonderfully
