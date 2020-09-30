@@ -924,6 +924,7 @@ aromatic
 arose
 around
 arousal
+arouse
 arousing
 arranged
 arrangements
@@ -1692,6 +1693,7 @@ bolts
 bombarded
 bombardment
 bombed
+bomber
 bombings
 bonded
 bonding
@@ -3509,6 +3511,7 @@ coworkers
 cows
 coyote
 cozy
+crab
 cracked
 crackers
 cracking
@@ -6873,6 +6876,7 @@ guides
 guiding
 guilds
 guilty
+guinea
 guise
 guitars
 gulf
@@ -13282,6 +13286,7 @@ sharply
 sharpness
 shattered
 shattering
+shave
 shaving
 shawl
 shaykh
@@ -14698,6 +14703,7 @@ tailored
 tailoring
 tailors
 tails
+taint
 taken
 takeoff
 takeover
