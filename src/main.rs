@@ -17,16 +17,15 @@ pub struct Entry {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("Arguments recieved: {:?}", args);
     if args.len() > 1 && !args[1].contains("csv") {
         // If we recieved any arguments, assume it's a letter and we're to parse a
         // TSV file of one letter's worth of Google Booke Ngram data
         let letter = &args[1];
+        println!("Scraping and processing letter {}...", letter);
         let tsv_file = format!("raw/{}", letter);
         // Make a Vector of tuples, where each tuple contains the word and its number of
         // appearances
         let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
-        println!("Made counts vec. Now appending that data to all_score_first CSV file.");
         // Append this data to a big CSV file that will eventually contain this data
         // for all 26 letters of the alphabet. CSV file will be called
         // all_score_first.csv, named that since the number of appearances (the
