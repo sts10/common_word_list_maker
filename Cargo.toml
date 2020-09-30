@@ -1,6 +1,6 @@
 [package]
 name = "common_word_list_maker"
-version = "0.1.20"
+version = "0.1.30"
 authors = ["sts10 <sschlinkert@gmail.com>"]
 edition = "2018"
 

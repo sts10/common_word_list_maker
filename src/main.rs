@@ -17,33 +17,37 @@ pub struct Entry {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("Arguments pecieved: \n{:?}", args);
+    println!("Arguments recieved: {:?}", args);
     if args.len() > 1 && !args[1].contains("csv") {
         // If we recieved any arguments, assume it's a letter and we're to parse a
         // TSV file of one letter's worth of Google Booke Ngram data
         let letter = &args[1];
-        let tsv_file = format!("raw/{}", letter,);
+        let tsv_file = format!("raw/{}", letter);
         // Make a Vector of tuples, where each tuple contains the word and its number of
         // appearances
         let counts_vec = make_counts_vec_from_tsv_file_path(PathBuf::from(tsv_file));
-        println!("Made counts vec. Now just writing it to a csv");
+        println!("Made counts vec. Now appending that data to all_score_first CSV file.");
         // Append this data to a big CSV file that will eventually contain this data
         // for all 26 letters of the alphabet. CSV file will be called
         // all_score_first.csv, named that since the number of appearances (the
         // "score") is listed first
         append_count_data_to_full_csv_file(counts_vec);
-        println!("Done appending letter {} data to full csv file", letter);
+        println!(
+            "Done appending letter {} data to all_score_first csv file",
+            letter
+        );
     } else {
-        println!("Did not receive a letter to process...\nCreating a text file word list");
+        println!("Did not receive a letter to process...");
+        println!("Creating a raw word list of top 100,000 words, sorted by appearance count, and writing the list to a 
+            text file called word_list_raw.txt");
 
         // Since the data in the all_score_first CSV file isn't sorted by number of
         // appearances, we have to do that in a separate step
         let all_counts_vec = make_sorted_counts_vec_from_complete_csv("csv/all_score_first.csv");
-        // We'll now use this handy Vector to create a word list of the top 26,000 words, with a
-        // minium word length of 4 characters. We'll also exclude the first 75 because they're
-        // a little _too_ common.
-        make_opinionated_word_list_from_counts_vec(all_counts_vec);
+        // We'll now use this handy Vector to create a word list of the top 100,000 words, sorted
+        // by appearance count
         // This word list will be printed to a new text file called word_list_raw.txt
+        make_raw_word_list_from_counts_vec(all_counts_vec);
     }
 }
 
@@ -70,7 +74,7 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
         };
         if record[1].parse::<usize>().unwrap() > 1975 {
             let word = clean_word(record[0].to_string());
-            // record[2] is overall appaearances; record[3] is the number of distinct samples (books) it
+            // record[2] is overall appearances; record[3] is the number of distinct samples (books) it
             // appeared in https://storage.googleapis.com/books/ngrams/books/datasetsv3.html
             let this_count = record[2].to_string().parse().unwrap();
             counts_hashmap
@@ -84,13 +88,16 @@ fn make_counts_vec_from_tsv_file_path(file_path: PathBuf) -> Vec<(String, usize)
     let mut count_vec: Vec<(String, usize)> = counts_hashmap.into_iter().collect();
     count_vec.sort_by(|a, b| a.1.cmp(&b.1));
     count_vec.reverse();
-    // for pair in &count_vec {
-    //     println!("{:?}", pair);
-    // }
-    println!("vector size for letter a is {}", count_vec.len());
-    if count_vec.len() > 20_000 {
-        count_vec.drain(20_000..);
-        println!("drained: vector size for letter a is {}", count_vec.len());
+    println!(
+        "Before potentially draining, the vector size of words beginning with this letter is {}",
+        count_vec.len()
+    );
+    if count_vec.len() > 100_000 {
+        count_vec.drain(100_000..);
+        println!(
+            "After draining, vector size for this letter is {}",
+            count_vec.len()
+        );
     }
     count_vec
 }
@@ -122,7 +129,6 @@ fn clean_word(w: String) -> String {
 }
 
 fn make_sorted_counts_vec_from_complete_csv(file_path: &str) -> Vec<(String, usize)> {
-    // let mut word_list: Vec<String> = Vec::new();
     let mut full_counts_hashmap: HashMap<String, usize> = HashMap::new();
 
     let mut rdr = Reader::from_path(file_path).expect("Error reading CSV file");
@@ -150,17 +156,13 @@ fn make_sorted_counts_vec_from_complete_csv(file_path: &str) -> Vec<(String, usi
     full_count_vec
 }
 
-fn make_opinionated_word_list_from_counts_vec(full_count_vec: Vec<(String, usize)>) {
+fn make_raw_word_list_from_counts_vec(full_count_vec: Vec<(String, usize)>) {
     let mut list: Vec<String> = Vec::new();
-    let words_to_print = 26_000;
-    let minimum_word_length = 4;
+    let words_to_print = 100_000;
 
     let mut i = 0;
     for word_info in full_count_vec {
-        // skip first 76 words, as they're a bit too common
-        if i > 76 && word_info.0.len() >= minimum_word_length {
-            list.push(word_info.0);
-        }
+        list.push(word_info.0);
         i += 1;
         if i > words_to_print {
             break;

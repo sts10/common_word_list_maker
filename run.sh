@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# rm -rf csv
+# rm -rf raw
 mkdir csv
 mkdir raw
 
