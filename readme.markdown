@@ -22,7 +22,7 @@ To do this, you'll likely want to make strategic cuts to the word_list_raw.txt f
 
 For more advanced editing, I'd recommend using another tool I wrote called [Tidy](https://github.com/sts10/tidy/). Once installed, Tidy provides you a few options of how further clean up your word list, which you can read about in the tool's documentation.
 
-As an example, if you want to take the first 31,000 words from `word_list_raw.txt`, then (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words from a text file of "reject words" (you can find such a list [here](https://github.com/zacanger/profane-words)), (3) eliminate [prefix words](https://en.wikipedia.org/wiki/Prefix_code), (4) eliminate words shorter than 4 characters, and (5) ensure all words are lowercase, you'd run: `tidy -o cleaned_word_list.txt --take-first 31000 -lPe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
+As an example, if you want to take the first 31,000 words from `word_list_raw.txt`, then (1) filter out words NOT in your Mac/Linux OS's dictionary, (2) remove words from a text file of "reject words" (you can find such a list [here](https://github.com/zacanger/profane-words)), (3) eliminate [prefix words](https://en.wikipedia.org/wiki/Prefix_code), (4) eliminate words shorter than 4 characters, and (5) ensure all words are lowercase, you'd run: `tidy -o example_word_list.txt --take-first 31000 -lPe -m 4 -a /usr/share/dict/words -r reject_words.txt word_list_raw.txt`.
 
 An example of a "cleaned" word list of 16,607 words that I made using Tidy can be found at `./example_word_list.txt`. More generated word lists can be found in `generated_wordlists/` directory.
 
