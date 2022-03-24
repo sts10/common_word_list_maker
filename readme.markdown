@@ -4,6 +4,8 @@ This program scrapes most commonly used words from Google Books Ngram data in or
 
 It's hard-coded to scrape 2012 Google Books Ngram data from this website: [https://storage.googleapis.com/books/ngrams/books/datasetsv3.html](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html).
 
+**Looking for ready-to-use word lists?** I'd point you to [this separate repo](https://github.com/sts10/generated-wordlists).
+
 ## What this program does
 
 **Step 1** is to programmatically **scrape** and clean the Google Books Ngram data for words starting with each letter of the alphabet. It sums and merges counts from all years **after 1975** (a somewhat arbitrary choice on my part), and then takes the top 100,000 words for each letter. 
