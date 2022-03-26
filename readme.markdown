@@ -30,7 +30,10 @@ An example of a "cleaned" word list of 16,607 words that I made using Tidy can b
 
 ## How to run this program 
 
-Assuming you have [Rust installed](https://www.rust-lang.org/tools/install)...
+Prerequisites: 
+* [Rust installed](https://www.rust-lang.org/tools/install)
+* `curl`
+* `gunzip`
 
 Run `./run.sh`, the end product of which is the "word_list_raw.txt" file.
 
