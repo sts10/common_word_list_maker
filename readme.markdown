@@ -19,12 +19,14 @@ It does this for all 26 letters, producing a separate CSV file for each letter i
 ## How to run this program 
 
 ### Prerequisites
-* [Rust installed](https://www.rust-lang.org/tools/install)
-* `curl`
-* `gunzip`
+* Have [Rust and its Cargo tool installed](https://www.rust-lang.org/tools/install)
+* Have `curl` installed
+* Have `gunzip` installed
+
+You'll also need about 200 MB of free storage.
 
 ### How to run this program
-Run `./run.sh`, the end product of which is the "word_list_raw.txt" file.
+Run `./run.sh`. This process will produce a file called "word_list_raw.txt".
 
 See below for advice/options to further edit the raw word list.
 
